@@ -1,23 +1,30 @@
 import React from 'react'
 
-class Search extends React.Component {
-    onInputChange(e) {
-        console.log(e.target.value)
+class SearchBar extends React.Component {
+    state = {
+        term: ''
     }
 
-    onFormSubmit(e) {
+    onFormSubmit = (e) => {
         e.preventDefault()
+
+        this.props.onSubmit(this.state.term)
     }
+
     render() {
         return (
         <div>
             <form onSubmit={this.onFormSubmit}>
                 <label>Movie Search</label>
-                <input type="text" placeholder="Search..." onChange={this.onInputChange}></input>
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    value={this.state.term}
+                    onChange={e => this.setState({term: e.target.value})}></input>
             </form>
         </div>
     );
     }
 }
 
-export default Search;
+export default SearchBar;
