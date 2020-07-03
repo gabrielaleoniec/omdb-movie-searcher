@@ -5,32 +5,47 @@ import './App.css';
 import SearchBar from './components/Search'
 import MovieList from './components/MovieList'
 
+/**
+ * TODO: Redux
+ * TODO: Pagination
+ * TODO: One more input
+ * TODO: Comments
+ * TODO: Readme
+ */
 class App extends React.Component {
   state = {
-    images: []
+    movies: null,
+    page: 1
   }
 
-  onSearchSubmit = async (term) => {
+  onSearchSubmit = async (term, page) => {
     const url = 'http://www.omdbapi.com/'
     const apikey = '157f34ed'
     const response = await axios.get(url, {
       params: {
         apikey,
-        s: term
+        s: term,
+        page
       }
     })
 
-    this.setState({images: response.data.Search})
+    if(response.data && response.data.Search) {
+      return this.setState({ movies: response.data.Search })
+    }
+
+    this.setState({ movies: [] })
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>Open Movie Database Searcher</h1>
-          <SearchBar onSubmit={this.onSearchSubmit} />
-          <MovieList images={this.state.images} />
-        </header>
+          <header className="App-header">
+            <h1>Open Movie Database Searcher</h1>
+          </header>
+          <main>
+            <SearchBar onSubmit={this.onSearchSubmit} />
+            <MovieList movies={this.state.movies} />
+          </main>
       </div>
     );
   }
