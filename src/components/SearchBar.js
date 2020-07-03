@@ -18,7 +18,7 @@ class SearchBar extends React.Component {
             <form onSubmit={this.onFormSubmit}>
                 <div>
                     <div>
-                    <label className="Search-label" for="search">Movie title</label>
+                    <label className="Search-label" htmlFor="search">Movie title</label>
                     <input
                         id="search"
                         className="Search-input"
