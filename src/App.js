@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import axios from 'axios';
 import './App.css';
-import SearchBar from './components/Search'
+import SearchBar from './components/SearchBar'
 import MovieList from './components/MovieList'
 
 /**
