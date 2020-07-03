@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import axios from 'axios';
 import './App.css';
 import SearchBar from './components/SearchBar'
 import MovieList from './components/MovieList'
+
 
 /**
  * TODO: Redux
@@ -40,7 +40,7 @@ class App extends React.Component {
     return (
       <div className="App">
           <header className="App-header">
-            <h1>Open Movie Database Searcher</h1>
+            <h1>Open Movie Database Search</h1>
           </header>
           <main>
             <SearchBar onSubmit={this.onSearchSubmit} />

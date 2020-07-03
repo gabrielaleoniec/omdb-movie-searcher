@@ -18,12 +18,12 @@ class SearchBar extends React.Component {
             <form onSubmit={this.onFormSubmit}>
                 <div>
                     <div>
-                    <label className="Search-label" for="search">Movie Search</label>
+                    <label className="Search-label" for="search">Movie title</label>
                     <input
                         id="search"
                         className="Search-input"
                         type="text"
-                        placeholder="Search..."
+                        placeholder="Movie title..."
                         value={this.state.term}
                         onChange={e => this.setState({term: e.target.value})}></input>
                     </div>

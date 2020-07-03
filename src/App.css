@@ -4,7 +4,7 @@
   color: #cccccc;
   display: flex;
   flex-direction: column;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-family: Quicksand, Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
   justify-content: center;
   min-height: calc(100vh - 4rem);
@@ -14,5 +14,6 @@
 
 .App-header {
   font-size: calc(5px + 2vmin);
-  font-weight: 300;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 100;
 }
