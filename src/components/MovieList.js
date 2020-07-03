@@ -7,7 +7,7 @@ const MovieList = (props) => {
         return null
     }
 
-    const movies = props.movies.map((movie) =>  <Movie key={movie.id} movie={movie} />)
+    const movies = props.movies.map((movie) =>  <Movie key={movie.imdbID.toString()} movie={movie} />)
 
     if(!props.movies.length) {
         return <h2 className="Movies-info">No movies found</h2>

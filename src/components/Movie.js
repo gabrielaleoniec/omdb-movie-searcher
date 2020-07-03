@@ -3,15 +3,15 @@ import './Movie.css'
 
 const Poster = (poster, title) => {
     if(poster === "N/A") {
-        return <div className="Movie-image"><i class="fa fa-image fa-3x Movie-icon"></i></div>
+        return <div className="Movie-image"><i className="fa fa-image fa-3x Movie-icon"></i></div>
     }
     return <img src={poster} alt={title} className="Movie-image"/>
 }
 
 const Movie = (props) => {
-    const {key, movie} = props
+    const {movie} = props
 
-    return <div key={key} className="Movie">
+    return <li className="Movie">
         {Poster(movie.Poster, movie.Title)}
         <div className="Movie-cover"></div>
         <div className="Movie-data">
@@ -19,7 +19,7 @@ const Movie = (props) => {
             <div>{movie.Type}</div>
             <div>{movie.Year}</div>
         </div>
-    </div>
+    </li>
 }
 
 export default Movie;
