@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux'
+import store from './store/store'
 import './App.css';
 import SearchBar from './components/SearchBar'
 import MovieList from './components/MovieList'
-
 
 /**
  * TODO: Redux
@@ -18,14 +19,15 @@ class App extends React.Component {
     page: 1
   }
 
-  onSearchSubmit = async (term, page) => {
+  onSearchSubmit = async () => {
+    const state = store.getState()
     const url = 'http://www.omdbapi.com/'
     const apikey = '157f34ed'
     const response = await axios.get(url, {
       params: {
         apikey,
-        s: term,
-        page
+        s: state.title,
+        page: 1
       }
     })
 
@@ -51,4 +53,11 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  console.log('mapStateToProps in the App: state:', state)
+  return {
+      query: state.query
+  }
+}
+
+export default connect(mapStateToProps)(App);
