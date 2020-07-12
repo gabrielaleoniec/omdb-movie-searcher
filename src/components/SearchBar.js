@@ -13,7 +13,6 @@ class SearchBar extends React.Component {
     }
 
     onFormSubmit = (e) => {
-        console.log('onFormSubmit', this.props)
         e.preventDefault()
 
         this.props.dispatch(titleInput(this.state.query))
