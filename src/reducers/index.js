@@ -32,9 +32,18 @@ const toggleMoreReducer = (showMore = false, action) => {
     return showMore
 }
 
+const toggleIsLoading = (isLoading = false, action) => {
+    if(action.type === 'IS_LOADING') {
+        return action.payload
+    }
+
+    return isLoading
+}
+
 export default combineReducers({
     title: titleReducer,
     page: pageReducer,
     movies: moviesReducer,
-    showMore: toggleMoreReducer
+    showMore: toggleMoreReducer,
+    isLoading: toggleIsLoading
 })

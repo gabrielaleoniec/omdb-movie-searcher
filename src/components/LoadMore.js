@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { pageInput } from '../actions'
+import './LoadMore.css'
 
 const LoadMore = (props) => {
     const pageNrIncrease = (e) => {
@@ -17,7 +18,7 @@ const LoadMore = (props) => {
         return null
     }
 
-    return <button onClick={pageNrIncrease}>Load more</button>
+    return <button className="Load-more" onClick={pageNrIncrease}>Load more</button>
 }
 
 const mapStateToProps = (state) => {

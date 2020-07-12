@@ -1,12 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux'
-import { listMovies, toggleMore } from './actions'
+import { listMovies, toggleMore, toggleLoading } from './actions'
 import store from './store/store'
 import './App.css';
 import SearchBar from './components/SearchBar'
 import MovieList from './components/MovieList'
 import LoadMore from './components/LoadMore'
+import WithLoading from './components/WithLoading'
+
+const LoadMoreWithLoading = WithLoading(LoadMore)
 
 const url = 'http://www.omdbapi.com/'
 const apikey = '157f34ed'
@@ -19,9 +22,10 @@ const apikey = '157f34ed'
  */
 const App = (props) => {
     const onSearchSubmit = async () => {
-        console.log('>>App', props)
         // Props were not updated by mapStateToProps
         const { title, page, movies, showMore } = store.getState()
+
+        props.dispatch(toggleLoading(true))
 
         const response = await axios.get(url, {
             params: {
@@ -34,6 +38,8 @@ const App = (props) => {
         if (!response.data) {
             console.log('No response data returned from server')
         }
+
+        props.dispatch(toggleLoading(false))
 
         const newMovies = response.data.Search || []
 
@@ -55,19 +61,19 @@ const App = (props) => {
             <main>
                 <SearchBar onSubmit={onSearchSubmit} />
                 <MovieList />
-                <LoadMore onClick={onSearchSubmit} />
+                <LoadMoreWithLoading onClick={onSearchSubmit} isLoading = {props.isLoading}/>
             </main>
         </div>
     );
 }
 
 const mapStateToProps = (state) => {
-    console.log('mapStateToProps in the App:', state)
     return {
         title: state.title,
         page: state.page,
         movies: state.movies,
-        showMore: state.showMore
+        showMore: state.showMore,
+        isLoading: state.isLoading
     }
 }
 

@@ -23,3 +23,8 @@ export const toggleMore = showMore => ({
     type: 'SHOW_MORE',
     payload: showMore
 })
+
+export const toggleLoading = isLoading => ({
+    type: 'IS_LOADING',
+    payload: isLoading
+})
