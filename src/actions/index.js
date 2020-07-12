@@ -18,3 +18,8 @@ export const listMovies = movies => {
         payload: movies
     }
 }
+
+export const toggleMore = showMore => ({
+    type: 'SHOW_MORE',
+    payload: showMore
+})

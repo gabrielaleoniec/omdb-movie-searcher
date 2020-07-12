@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {titleInput} from '../actions'
+import {titleInput, pageInput, listMovies, toggleMore} from '../actions'
 import './SearchBar.css'
 
 class SearchBar extends React.Component {
@@ -13,9 +13,13 @@ class SearchBar extends React.Component {
     }
 
     onFormSubmit = (e) => {
+        console.log('onFormSubmit', this.props)
         e.preventDefault()
 
         this.props.dispatch(titleInput(this.state.query))
+        this.props.dispatch(pageInput(1))
+        this.props.dispatch(listMovies([]))
+        this.props.dispatch(toggleMore(false))
 
         this.props.onSubmit()
     }
@@ -42,10 +46,4 @@ class SearchBar extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        query: state.query
-    }
-}
-
-export default connect(mapStateToProps)(SearchBar);
+export default connect()(SearchBar);

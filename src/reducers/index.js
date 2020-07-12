@@ -24,8 +24,17 @@ const moviesReducer = (movies = [], action) => {
     return movies
 }
 
+const toggleMoreReducer = (showMore = false, action) => {
+    if(action.type === 'SHOW_MORE') {
+        return action.payload
+    }
+
+    return showMore
+}
+
 export default combineReducers({
     title: titleReducer,
     page: pageReducer,
-    movies: moviesReducer
+    movies: moviesReducer,
+    showMore: toggleMoreReducer
 })
