@@ -12,6 +12,8 @@ import LoadMore from './components/LoadMore'
  * TODO: One more input: year
  * TODO: Comments
  * TODO: Readme correct
+ * TODO: Add sorting
+ * TODO: Add loading
  */
 class App extends React.Component {
   constructor(props) {
@@ -63,7 +65,7 @@ class App extends React.Component {
           </header>
           <main>
             <SearchBar onSubmit={this.onSearchSubmit} />
-            <MovieList movies={this.state.movies} />
+            <MovieList />
             <LoadMore onClick={this.onSearchSubmit} />
           </main>
       </div>
@@ -72,7 +74,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapStateToProps in the App: state:', state)
+  console.log('mapStateToProps in the App:', state)
   return {
       title: state.title,
       page: state.page,

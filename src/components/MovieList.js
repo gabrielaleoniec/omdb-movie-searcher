@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Movie from './Movie'
 import './MovieList.css'
 
@@ -23,4 +24,10 @@ const MovieList = (props) => {
         </section>
 }
 
-export default MovieList
+const mapStateToProps = (state) => {
+    return {
+        movies: state.movies
+    }
+  }
+
+export default connect(mapStateToProps)(MovieList)
