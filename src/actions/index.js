@@ -5,6 +5,13 @@ export const titleInput = title => {
     }
 }
 
+export const yearInput = year => {
+    return {
+        type: 'YEAR_INPUT',
+        payload: year
+    }
+}
+
 export const pageInput = page => {
     return {
         type: 'PAGE_INPUT',

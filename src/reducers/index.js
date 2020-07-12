@@ -8,6 +8,14 @@ const titleReducer = (title = '', action) => {
     return title
 }
 
+const yearReducer = (year = '', action) => {
+    if(action.type === 'YEAR_INPUT') {
+        return action.payload
+    }
+
+    return year
+}
+
 const pageReducer = (page = 1, action) => {
     if(action.type === 'PAGE_INPUT') {
         return action.payload
@@ -42,6 +50,7 @@ const toggleIsLoading = (isLoading = false, action) => {
 
 export default combineReducers({
     title: titleReducer,
+    year: yearReducer,
     page: pageReducer,
     movies: moviesReducer,
     showMore: toggleMoreReducer,

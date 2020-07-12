@@ -12,6 +12,17 @@
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0,0,0,0);
+    clip: rect(0, 0, 0, 0);
     border: 0;
+}
+
+.Search-button {
+    background: none !important;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #346497;
+    cursor: pointer;
+    font-size: large;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
 }

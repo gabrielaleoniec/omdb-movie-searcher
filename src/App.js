@@ -15,15 +15,13 @@ const url = 'http://www.omdbapi.com/'
 const apikey = '157f34ed'
 /**
  * TODO: One more input: year
- * TODO: Comments
  * TODO: Readme correct
  * TODO: Add sorting
- * TODO: Add loading
  */
 const App = (props) => {
     const onSearchSubmit = async () => {
         // Props were not updated by mapStateToProps
-        const { title, page, movies, showMore } = store.getState()
+        const { title, year, page, movies, showMore } = store.getState()
 
         props.dispatch(toggleLoading(true))
 
@@ -31,6 +29,7 @@ const App = (props) => {
             params: {
                 apikey,
                 s: title,
+                y: year,
                 page: page || 1
             }
         })
@@ -70,6 +69,7 @@ const App = (props) => {
 const mapStateToProps = (state) => {
     return {
         title: state.title,
+        year: state.year,
         page: state.page,
         movies: state.movies,
         showMore: state.showMore,
