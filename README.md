@@ -4,7 +4,7 @@ This application allowes to look for movies in the [Open Movie Database](http://
 The movies can be searched by title
 The results are paginated. There are 10 results on each page.
 
-![Project screenshot](./screenshot.jpg?raw=true)
+![Project screenshot](./screenshot1.jpg?raw=true)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
