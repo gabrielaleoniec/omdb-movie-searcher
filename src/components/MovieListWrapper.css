@@ -1,0 +1,20 @@
+.Select {
+    background-color: transparent;
+    border: 1px solid #346497;
+    border-radius: 4px;
+    color: #cccccc;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: .3em;
+}
+
+.Select > option {
+    background-color: #111111;
+    border: none;
+    color: #cccccc;
+    font-size: 1rem;
+}
+
+.Select-label {
+    font-size: 1rem;
+}
