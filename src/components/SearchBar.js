@@ -37,7 +37,7 @@ class SearchBar extends React.Component {
                         <label className="Search-label" htmlFor="title">Movie title</label>
                         <input
                             id="title"
-                            className="Search-input"
+                            className="Search-title"
                             type="text"
                             placeholder="Movie title..."
                             value={this.state.query}
@@ -45,7 +45,7 @@ class SearchBar extends React.Component {
                         <label className="Search-label" htmlFor="year">Year of release</label>
                         <input
                             id="year"
-                            className="Search-input"
+                            className="Search-year"
                             type="number"
                             placeholder="Year of release"
                             min="1878"
