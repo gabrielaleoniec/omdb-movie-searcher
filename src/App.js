@@ -5,7 +5,7 @@ import { listMovies, toggleMore, toggleLoading } from './actions'
 import store from './store/store'
 import './App.css';
 import SearchBar from './components/SearchBar'
-import MovieList from './components/MovieList'
+import MovieListWrapper from './components/MovieListWrapper'
 import LoadMore from './components/LoadMore'
 import WithLoading from './components/WithLoading'
 
@@ -25,31 +25,37 @@ const App = (props) => {
 
         props.dispatch(toggleLoading(true))
 
-        const response = await axios.get(url, {
-            params: {
-                apikey,
-                s: title,
-                y: year,
-                page: page || 1
+        try {
+            const response = await axios.get(url, {
+                params: {
+                    apikey,
+                    s: title,
+                    y: year,
+                    page: page || 1
+                }
+            })
+
+            if (!response.data) {
+                console.log('No response data returned from server')
             }
-        })
 
-        if (!response.data) {
-            console.log('No response data returned from server')
+            props.dispatch(toggleLoading(false))
+
+            const newMovies = response.data.Search || []
+
+            if (movies.length && newMovies.length < 10) {
+                props.dispatch(toggleMore(false))
+            }
+            if (newMovies.length === 10 && !showMore) {
+                props.dispatch(toggleMore(true))
+            }
+
+            const mergedMovies = [...movies, ...newMovies]
+
+            props.dispatch(listMovies(mergedMovies))
+        } catch(e) {
+            console.error(e.response)
         }
-
-        props.dispatch(toggleLoading(false))
-
-        const newMovies = response.data.Search || []
-
-        if (movies.length && newMovies.length < 10) {
-            props.dispatch(toggleMore(false))
-        }
-        if (newMovies.length === 10 && !showMore) {
-            props.dispatch(toggleMore(true))
-        }
-
-        props.dispatch(listMovies([...movies, ...newMovies]))
     }
 
     return (
@@ -59,7 +65,7 @@ const App = (props) => {
             </header>
             <main>
                 <SearchBar onSubmit={onSearchSubmit} />
-                <MovieList />
+                <MovieListWrapper />
                 <LoadMoreWithLoading onClick={onSearchSubmit} isLoading = {props.isLoading}/>
             </main>
         </div>
