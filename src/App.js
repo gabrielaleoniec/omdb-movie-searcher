@@ -13,11 +13,7 @@ const LoadMoreWithLoading = WithLoading(LoadMore)
 
 const url = 'http://www.omdbapi.com/'
 const apikey = '157f34ed'
-/**
- * TODO: One more input: year
- * TODO: Readme correct
- * TODO: Add sorting
- */
+
 const App = (props) => {
     const onSearchSubmit = async () => {
         // Props were not updated by mapStateToProps
